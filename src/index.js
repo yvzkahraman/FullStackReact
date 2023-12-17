@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Counter from './Counter';
 import CategoryHome from './Component';
+import List from './product/List';
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,9 @@ const router = createBrowserRouter([
   {
     path: '/component',
     element: <CategoryHome></CategoryHome>
+  }, {
+    path: '/products',
+    element: <List></List>
   }
 ]);
 
