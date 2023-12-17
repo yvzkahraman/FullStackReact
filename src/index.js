@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import Counter from './Counter';
 import CategoryHome from './Component';
-import ProductFunction from './ProductFunction';
 
 
 const router = createBrowserRouter([
@@ -20,10 +19,6 @@ const router = createBrowserRouter([
   {
     path: '/Counter',
     element: <Counter></Counter>
-  },
-  {
-    path: '/Products',
-    element: <ProductFunction></ProductFunction>
   },
   {
     path: '/component',
