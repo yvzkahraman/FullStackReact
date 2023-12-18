@@ -5,6 +5,13 @@ class ApplicationStore {
     createFormActive = false;
     editFormActive = false;
 
+    createdProduct = {
+        id: 0,
+        name: '',
+        stock: 0,
+        price: 0,
+    }
+
     productList = [
         {
             id: 1,
@@ -40,16 +47,23 @@ class ApplicationStore {
         this.createFormActive = active;
     }
 
+    
+    setCreatedProduct(product) {
+        this.createdProduct = product;
+    }
+
     constructor() {
         makeObservable(this, {
             productList: observable,
             selectedProduct: observable,
             editFormActive: observable,
             createFormActive: observable,
+            createdProduct: observable,
             setProductList: action,
             setSelectedProduct: action,
             setCreateFormActive: action,
             setEditFormActive: action,
+            setCreatedProduct: action,
         });
     }
 

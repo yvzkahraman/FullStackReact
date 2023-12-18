@@ -35,7 +35,7 @@ const Edit = observer(() => {
 
         </div>
 
-        <div>
+        <div className="text-end">
             <button className='btn btn-warning btn-sm me-2' onClick={() => {
                 { store.setEditFormActive(false) }
             }}>Hide</button>
@@ -50,6 +50,8 @@ const Edit = observer(() => {
                 store.setProductList([
                     ...store.productList
                 ])
+
+                store.setEditFormActive(false)
             }}>Submit</button>
         </div>
     </>);

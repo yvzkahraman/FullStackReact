@@ -3,6 +3,7 @@ import { observer } from 'mobx-react'
 import { store } from '../stores/ApplicationStore';
 import { useNavigate } from 'react-router-dom';
 import Edit from './Edit';
+import Create from './Create';
 
 // observer
 
@@ -15,6 +16,13 @@ const List = observer(() => {
     return <>
 
         <div className='container mt-4'>
+
+            <div className='text-end'>
+                <button className='btn btn-primary' onClick={() => {
+                    store.setCreateFormActive(true);
+                }}>Add New Product</button>
+            </div>
+
 
             <table className='table'>
                 <thead>
@@ -50,8 +58,9 @@ const List = observer(() => {
                                     store.setEditFormActive(true)
                                 }}>Edit</button>
 
-                                <button className='btn btn-warning btn-sm' onClick={() => {
-
+                                <button className='btn btn-danger btn-sm' onClick={() => {
+                                    let newProductList = store.productList.filter(x => x.id != product.id);
+                                    store.setProductList([...newProductList]);
                                 }}>Remove</button>
                             </td>
                         </tr>
@@ -62,6 +71,8 @@ const List = observer(() => {
             </table>
 
             {store.editFormActive === true ? <> <Edit></Edit></> : <></>}
+
+            {store.createFormActive === true ? <><Create></Create></> : <></>}
 
         </div>
 
