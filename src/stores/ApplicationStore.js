@@ -13,18 +13,6 @@ class ApplicationStore {
     }
 
     productList = [
-        {
-            id: 1,
-            name: 'Macbook M2 PRO',
-            stock: 200,
-            price: 65000
-        },
-        {
-            id: 2,
-            name: 'Toplama PC',
-            stock: 100,
-            price: 20000,
-        }
     ]
 
     selectedProduct = {
@@ -47,7 +35,7 @@ class ApplicationStore {
         this.createFormActive = active;
     }
 
-    
+
     setCreatedProduct(product) {
         this.createdProduct = product;
     }

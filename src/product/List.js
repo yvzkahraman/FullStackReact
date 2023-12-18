@@ -4,6 +4,8 @@ import { store } from '../stores/ApplicationStore';
 import { useNavigate } from 'react-router-dom';
 import Edit from './Edit';
 import Create from './Create';
+import { useEffect } from 'react';
+import axios from 'axios'
 
 // observer
 
@@ -12,6 +14,16 @@ import Create from './Create';
 const List = observer(() => {
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        axios.get("http://localhost:5246/api/products").then(response => {
+            console.log("gelen response", response.data)
+            store.setProductList(response.data);
+        }).catch(err => {
+            console.log("err", err)
+        })
+
+    }, []);
 
     return <>
 

@@ -1,22 +1,12 @@
 
 import { observer } from "mobx-react";
 import { store } from "../stores/ApplicationStore";
+import axios from "axios";
 
 //connect => 
 const Create = observer(() => {
 
     return <>
-        <div className="mb-3">
-            <label>Id :</label>
-            <input type="number" className="form-control" value={store.createdProduct.id} onChange={(e) => {
-                store.setCreatedProduct({
-                    ...store.createdProduct,
-                    id: e.target.value,
-                })
-            }}></input>
-        </div>
-
-
 
         <div className="mb-3">
             <label>Name :</label>
@@ -29,7 +19,7 @@ const Create = observer(() => {
         </div>
 
 
-        <div className="mb-3">
+        {/* <div className="mb-3">
             <label>Price :</label>
             <input type="number" className="form-control" value={store.createdProduct.price} onChange={(e) => {
                 store.setCreatedProduct({
@@ -47,7 +37,7 @@ const Create = observer(() => {
                     stock: e.target.value,
                 })
             }}></input>
-        </div>
+        </div> */}
 
 
         <div className="text-end">
@@ -57,17 +47,27 @@ const Create = observer(() => {
 
             <button className="btn btn-info btn-sm" onClick={() => {
 
-                store.setProductList([
-                    ...store.productList,
-                    store.createdProduct
-                ])
 
-                store.setCreatedProduct({
-                    id: 0,
-                    name: '',
-                    price: 0,
-                    stock: 0,
+
+                axios.post("http://localhost:5246/api/products", store.createdProduct).then(response => {
+
+                    console.log("eklendi", response.data);
+
+                    store.setProductList([
+                        ...store.productList,
+                        response.data,
+                    ])
+
+                    store.setCreatedProduct({
+                        id: 0,
+                        name: '',
+                        price: 0,
+                        stock: 0,
+                    })
+                }).catch(err => {
+                    console.log("err", err)
                 })
+
 
             }}>Create</button>
         </div>
