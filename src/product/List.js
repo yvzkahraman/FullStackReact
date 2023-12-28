@@ -41,8 +41,8 @@ const List = observer(() => {
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Stock</th>
-                        <th>Price</th>
+                        {/* <th>Stock</th>
+                        <th>Price</th> */}
                         <th></th>
                     </tr>
                 </thead>
@@ -56,12 +56,12 @@ const List = observer(() => {
                             <td>
                                 {product.name}
                             </td>
-                            <td>
+                            {/* <td>
                                 {product.stock}
                             </td>
                             <td>
                                 {product.price}
-                            </td>
+                            </td> */}
                             <td>
 
 
